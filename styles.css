@@ -1,0 +1,284 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f4f4;
+  background-attachment: fixed;
+}
+header {
+  padding: 20px 0;
+  text-align: center;
+  position: relative;
+}
+.logo-container {
+  width: 300px;
+  height: 200px;
+  margin: 0 auto;
+  position: relative;
+  cursor: pointer;
+}
+.logo-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.header-buttons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 10px;
+}
+.icon-btn {
+  border: none;
+  background: #007BFF;
+  color: #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 10px;
+}
+.tally {
+  background: #fff;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: relative;
+}
+.image-container {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 15px;
+  cursor: pointer;
+  background: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.tally-controls {
+  flex-grow: 1;
+}
+.tally-name {
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 4px;
+  background: #f9f9f9;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.buttons {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  justify-content: center;
+}
+.buttons button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: #007BFF;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 0 5px;
+}
+.count-number {
+  font-size: 24px;
+  width: 60px;
+  text-align: center;
+}
+.progress-bar {
+  width: 100%;
+  background: #ddd;
+  height: 15px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.progress-bar-inner {
+  height: 100%;
+  width: 0;
+  background: #28a745;
+  transition: width 0.3s ease;
+}
+/* Stile per il menù a tre puntini */
+.tally-menu {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+  font-size: 24px;
+}
+.menu-options {
+  display: none;
+  position: absolute;
+  top: 30px;
+  right: 5px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  z-index: 10;
+}
+.menu-options button {
+  background: none;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+.menu-options button:hover {
+  background: #f4f4f4;
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(0,0,0,0.5);
+}
+.modal-content {
+  background: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 5px;
+  width: 90%;
+  max-width: 500px;
+}
+.modal-content input, .modal-content button {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+}
+
+/* Media Queries per la responsività */
+@media (max-width: 768px) {
+header {
+    padding: 10px 0;
+}
+.logo-container {
+    width: 200px;
+    height: 150px;
+}
+.header-buttons {
+    top: 5px;
+    right: 5px;
+}
+.icon-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+}
+.container {
+    padding: 5px;
+}
+.tally {
+    flex-direction: column;
+    align-items: center;
+}
+.image-container {
+    width: 60px;
+    height: 60px;
+    margin-right: 0;
+    margin-bottom: 10px;
+}
+.tally-controls {
+    width: 100%;
+    text-align: center;
+}
+.buttons {
+    justify-content: center;
+}
+.buttons button {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+}
+.count-number {
+    font-size: 20px;
+    width: 50px;
+}
+.progress-bar {
+    height: 10px;
+}
+.modal-content {
+    width: 95%;
+    margin: 20% auto;
+}
+}
+
+@media (max-width: 480px) {
+header {
+    padding: 5px 0;
+}
+.logo-container {
+    width: 150px;
+    height: 100px;
+}
+.header-buttons {
+    top: 5px;
+    right: 5px;
+}
+.icon-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+}
+.container {
+    padding: 5px;
+}
+.tally {
+    padding: 5px;
+}
+.image-container {
+    width: 50px;
+    height: 50px;
+}
+.tally-name {
+    font-size: 16px;
+}
+.buttons button {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+}
+.count-number {
+    font-size: 18px;
+    width: 40px;
+}
+.progress-bar {
+    height: 8px;
+}
+.modal-content {
+    width: 95%;
+    margin: 30% auto;
+}
+}

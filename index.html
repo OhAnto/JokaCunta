@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Joka Cunta</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="logo.png" alt="Logo Tally Count App">
+      <input type="file" id="logoInput" accept="image/*" style="display:none;">
+    </div>
+    <div class="header-buttons">
+      <button class="icon-btn" id="openSettings" title="Impostazioni">
+        <span class="icon"></span>
+        <i class='bx bxs-cog'></i>
+      </button>
+      <button class="icon-btn" id="addTallyBtn" title="Aggiungi Tally Count">
+        <span class="icon"></span>
+        <i class='bx bxs-add-to-queue'></i>
+      </button>
+    </div>
+  </header>
+
+  <div class="container">
+    <div id="tallyContainer">
+    </div>
+  </div>
+
+  <div id="settingsModal" class="modal">
+    <div class="modal-content">
+      <h2>Impostazioni</h2>
+      <label for="bgColor">Scegli sfondo (colore):</label>
+      <input type="color" id="bgColor">
+      <hr>
+      <label for="bgImageInput">Oppure carica uno sfondo (immagine):</label>
+      <input type="file" id="bgImageInput" accept="image/*">
+      <hr>
+      <label for="globalLimit">Imposta il limite del contatore:</label>
+      <input type="number" id="globalLimit" placeholder="Inserisci limite (es. 10)" min="1">
+      <button id="setGlobalLimit">Applica limite</button>
+      <hr>
+      <button id="closeSettings">Chiudi</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
