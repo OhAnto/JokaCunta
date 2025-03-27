@@ -3,6 +3,8 @@ const LOGO_KEY = 'tallyLogo';
 const BG_COLOR_KEY = 'bgColor';
 const BG_IMAGE_KEY = 'bgImage';
 const GLOBAL_LIMIT_KEY = 'globalLimitValue';
+const DEFAULT_LOGO = 'img/logo.png';
+const DEFAULT_IMAGE = 'img/placeholder-image.jpg';
 
 let tallies = [];
 
@@ -17,9 +19,9 @@ function loadTallies() {
   } else {
     const savedGlobalLimit = parseInt(localStorage.getItem(GLOBAL_LIMIT_KEY), 10) || 10;
     tallies = [
-      { id: Date.now(), name: 'Tally 1', count: 0, limit: savedGlobalLimit, image: 'placeholder-image' },
-      { id: Date.now() + 1, name: 'Tally 2', count: 0, limit: savedGlobalLimit, image: 'placeholder-image' },
-      { id: Date.now() + 2, name: 'Tally 3', count: 0, limit: savedGlobalLimit, image: 'placeholder-image' }
+      { id: Date.now(), name: 'Tally 1', count: 0, limit: savedGlobalLimit, image: DEFAULT_IMAGE},
+      { id: Date.now() + 1, name: 'Tally 2', count: 0, limit: savedGlobalLimit, image: DEFAULT_IMAGE },
+      { id: Date.now() + 2, name: 'Tally 3', count: 0, limit: savedGlobalLimit, image: DEFAULT_IMAGE}
     ];
     saveTallies();
   }
@@ -227,14 +229,17 @@ function renderTallies() {
   });
 }
 
-loadTallies();
-renderTallies();
-
-// Gestione del logo
-const savedLogo = localStorage.getItem(LOGO_KEY);
-if (savedLogo) {
-  document.querySelector('.logo-container img').src = savedLogo;
+function loadLogo() {
+  const savedLogo = localStorage.getItem(LOGO_KEY);
+  document.querySelector('.logo-container img').src = savedLogo || DEFAULT_LOGO;
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  loadTallies();
+  renderTallies();
+  loadLogo();
+});
+
 const logoContainer = document.querySelector('.logo-container');
 const logoInput = document.getElementById('logoInput');
 const logoImg = logoContainer.querySelector('img');
@@ -344,7 +349,6 @@ if (savedBgImage) {
   bgColorInput.value = savedBgColor;
 }
 
-// Aggiungi nuovo tally: usa il limite globale salvato se esiste
 document.getElementById('addTallyBtn').addEventListener('click', () => {
   const savedGlobalLimit = parseInt(localStorage.getItem(GLOBAL_LIMIT_KEY), 10) || 10;
   const newTally = {
@@ -352,8 +356,7 @@ document.getElementById('addTallyBtn').addEventListener('click', () => {
     name: '',
     count: 0,
     limit: savedGlobalLimit,
-    // Imposta l'immagine placeholder di default finché l'utente non ne carica una personalizzata
-    image: 'placeholder-image.jpg'
+    image: DEFAULT_IMAGE // Immagine predefinita
   };
   tallies.push(newTally);
   saveTallies();
